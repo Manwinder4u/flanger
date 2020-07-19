@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flanger</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="<%= yield (:body_class) %>">
+
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <%= link_to "FLANGER", root_path, class:"navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+        <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to current_user.name, edit_user_registration_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"nav-link" %>
+            </li>
+            <% else %>
+            <li class="nav-item">
+            <%= link_to "Sign In", new_user_session_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class:"nav-link" %>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+</nav>
+  <%= yield (:header) %>
+  <div class="container"><%= yield %>
+      <p class="notice text-success"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
+  </body>
+</html>
