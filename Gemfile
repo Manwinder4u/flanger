@@ -25,7 +25,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'simple_form'
 gem 'devise'
 gem 'gravatar_image_tag'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem "mini_magick"
 
 # Use Active Storage variant
